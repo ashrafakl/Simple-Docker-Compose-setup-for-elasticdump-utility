@@ -1,0 +1,9 @@
+services:
+  elasticdump:
+    image: elasticdump/elasticsearch-dump:latest
+    container_name: elasticdump
+    command: tail -f /dev/null
+    volumes:
+      - ./backups:/backups
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
