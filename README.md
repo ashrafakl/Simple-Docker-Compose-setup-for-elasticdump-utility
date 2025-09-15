@@ -6,19 +6,19 @@ Simple Docker Compose setup for elasticdump utility.
 
 1. Start the container:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 2. Use elasticdump commands:
 ```bash
-docker-compose exec elasticdump elasticdump --help
+docker compose exec elasticdump elasticdump --help
 ```
 
 ## Basic Usage
 
 ### Copy an index
 ```bash
-docker-compose exec elasticdump elasticdump \
+docker compose exec elasticdump elasticdump \
   --input=http://your-source-host:9200/index-name \
   --output=http://your-target-host:9200/index-name \
   --type=data
@@ -26,7 +26,7 @@ docker-compose exec elasticdump elasticdump \
 
 ### Backup to file
 ```bash
-docker-compose exec elasticdump elasticdump \
+docker compose exec elasticdump elasticdump \
   --input=http://your-host:9200/index-name \
   --output=/backups/backup.json \
   --type=data
@@ -34,7 +34,7 @@ docker-compose exec elasticdump elasticdump \
 
 ### Restore from file
 ```bash
-docker-compose exec elasticdump elasticdump \
+docker compose exec elasticdump elasticdump \
   --input=/backups/backup.json \
   --output=http://your-host:9200/index-name \
   --type=data
@@ -45,13 +45,13 @@ docker-compose exec elasticdump elasticdump \
 ### Copy with mapping and data
 ```bash
 # Copy mapping first
-docker-compose exec elasticdump elasticdump \
+docker compose exec elasticdump elasticdump \
   --input=http://source:9200/index-name \
   --output=http://target:9200/index-name \
   --type=mapping
 
 # Then copy data
-docker-compose exec elasticdump elasticdump \
+docker compose exec elasticdump elasticdump \
   --input=http://source:9200/index-name \
   --output=http://target:9200/index-name \
   --type=data
@@ -59,7 +59,7 @@ docker-compose exec elasticdump elasticdump \
 
 ### Restore from file
 ```bash
-docker-compose exec elasticdump elasticdump \
+docker compose exec elasticdump elasticdump \
   --input=/backups/backup.json \
   --output=http://your-host:9200/index-name \
   --type=data
